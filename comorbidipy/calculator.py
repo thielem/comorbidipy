@@ -37,10 +37,13 @@ def _calculate_weighted_score(
     w = pd.Series(w)
 
     dfp["comorbidity_score"] = df.multiply(w).sum(axis=1)
+    
+    """
     # if sum of weights is less than zero, set it zero (this only applies to UK SHMI)
     dfp["comorbidity_score"] = dfp["comorbidity_score"].where(
         dfp["comorbidity_score"] >= 0, 0
     )
+    """
     return dfp
 
 
